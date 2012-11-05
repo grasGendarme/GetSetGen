@@ -1,0 +1,11 @@
+TODO: create a parsing library and use it instead of the brutal parsing
+
+syntax coloring
+
+Complete type when typing
+
+Write a controller initialized in the appdelegate instead of doing everything there.
+
+A nice bottom menu
+
+Preferences (autocopy to clipboard, etc)
