@@ -15,7 +15,7 @@
 @interface GSGAppDelegate () <NSTextViewDelegate>
 @property (unsafe_unretained) IBOutlet NSTextView *inputBox;
 @property (unsafe_unretained) IBOutlet NSTextView *outputBox;
-@property (unsafe_unretained) IBOutlet NSButton *generateButton;
+@property (unsafe_unretained) IBOutlet NSButton *clipBoardCopyButton;
 
 
 @property (nonatomic, strong) NSMutableSet *usedTypes;
@@ -35,7 +35,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // show example
+    // show an example input
     // todo : define it as nsstring const (in another file)
     self.inputBox.string = CCExpectedOutput;
     
@@ -46,52 +46,39 @@
     self.generateConstructor = YES;
 }
 
-- (IBAction)generateCodeButtonPressed:(NSButton *)sender {
-    [self makeButtonGenerate:NO];
-    
+#pragma mark - important method (generate code)
+- (void)generateCode {
     [self.outputBox setString:[self convertInput:self.inputBox.string generatingConstructorBody:self.generateConstructor generatingCodeFolding:self.generateFoldedCode]];
-    
 }
-
 
 #warning TODO : better way of getting the state of the checkbox
 - (IBAction)constructorButtonPressed:(NSButton *)sender {
     self.generateConstructor = (sender.state == NSOnState);
-    [self generateCodeButtonPressed:nil];
+    [self generateCode];
 }
 
 - (IBAction)codeFoldButtonPressed:(NSButton *)sender {
     self.generateFoldedCode = (sender.state == NSOnState);
-    [self generateCodeButtonPressed:nil];
+    [self generateCode];
 }
-
 
 - (void)textDidChange:(NSNotification *)notification {
-    [self makeButtonGenerate:YES];
+    [self generateCode];
 }
 
-// will convert the main button from one function to the other (generate and copy to clipboard)
-- (void)makeButtonGenerate:(BOOL)generate {
-    if(generate) {
-        self.generateButton.title = CCGenerate;
-        self.generateButton.action = @selector(generateCodeButtonPressed:);
-        [self.generateButton setEnabled:YES];
-    } else {
-        self.generateButton.title = CCCopyClipBoard ;
-        self.generateButton.action = @selector(copyResultToClipBoard);
-        [self.generateButton setEnabled:YES];
-    }
-    self.window.viewsNeedDisplay = YES;
+- (IBAction)copyButtonPressed:(NSButton *)sender {
+    [self copyResultToClipBoard];
 }
+
 
 - (void)copyResultToClipBoard {
     // writing self.outputbox.string to the pasteboard
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:nil];
     if([pasteboard setString:self.outputBox.string forType:NSStringPboardType]) {
-        // TODO post a notification that the copy worked (via notification center?)
+#warning TODO post a notification that the copy worked (via notification center?)
     }
-    [self.generateButton setEnabled:NO];
+    [self.clipBoardCopyButton setEnabled:NO];
 }
 
 // this is basically a parser calling GSGVariableContainer's createGetSet for each line

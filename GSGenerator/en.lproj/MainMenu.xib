@@ -1314,16 +1314,16 @@
 						<object class="NSButton" id="452007242">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{193, 13}, {135, 32}}</string>
+							<string key="NSFrame">{{184, 13}, {153, 32}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="552941226"/>
+							<reference key="NSNextKeyView" ref="933508244"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="357577908">
 								<int key="NSCellFlags">67108864</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">Generate code!</string>
+								<string key="NSContents">Copy to clipboard</string>
 								<object class="NSFont" key="NSSupport" id="483467668">
 									<string key="NSName">LucidaGrande</string>
 									<double key="NSSize">13</double>
@@ -1980,11 +1980,11 @@ wGw</bytes>
 								<reference key="NSControlView" ref="486799512"/>
 								<int key="NSButtonFlags">1211912448</int>
 								<int key="NSButtonFlags2">2</int>
-								<object class="NSCustomResource" key="NSNormalImage" id="396704784">
+								<object class="NSCustomResource" key="NSNormalImage" id="1070102390">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">NSSwitch</string>
 								</object>
-								<object class="NSButtonImageSource" key="NSAlternateImage" id="833444102">
+								<object class="NSButtonImageSource" key="NSAlternateImage" id="967309367">
 									<string key="NSImageName">NSSwitch</string>
 								</object>
 								<string key="NSAlternateContents"/>
@@ -1994,7 +1994,7 @@ wGw</bytes>
 							</object>
 							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
-						<object class="NSButton" id="552941226">
+						<object class="NSButton" id="933508244">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{338, 18}, {164, 18}}</string>
@@ -2002,17 +2002,17 @@ wGw</bytes>
 							<reference key="NSWindow"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="14990066">
+							<object class="NSButtonCell" key="NSCell" id="622805521">
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">268435456</int>
 								<string key="NSContents">Netbeans code folding</string>
 								<reference key="NSSupport" ref="483467668"/>
 								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="552941226"/>
+								<reference key="NSControlView" ref="933508244"/>
 								<int key="NSButtonFlags">1211912448</int>
 								<int key="NSButtonFlags2">2</int>
-								<reference key="NSNormalImage" ref="396704784"/>
-								<reference key="NSAlternateImage" ref="833444102"/>
+								<reference key="NSNormalImage" ref="1070102390"/>
+								<reference key="NSAlternateImage" ref="967309367"/>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">200</int>
@@ -2721,14 +2721,6 @@ wGw</bytes>
 					<int key="connectionID">532</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">generateCodeButtonPressed:</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="452007242"/>
-					</object>
-					<int key="connectionID">553</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">outputBox</string>
 						<reference key="source" ref="976324537"/>
@@ -2764,7 +2756,7 @@ wGw</bytes>
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">codeFoldingCheckBox</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="552941226"/>
+						<reference key="destination" ref="933508244"/>
 					</object>
 					<int key="connectionID">626</int>
 				</object>
@@ -2772,7 +2764,7 @@ wGw</bytes>
 					<object class="IBActionConnection" key="connection">
 						<string key="label">codeFoldButtonPressed:</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="552941226"/>
+						<reference key="destination" ref="933508244"/>
 					</object>
 					<int key="connectionID">632</int>
 				</object>
@@ -2783,6 +2775,30 @@ wGw</bytes>
 						<reference key="destination" ref="486799512"/>
 					</object>
 					<int key="connectionID">633</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">copyButtonPressed:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="452007242"/>
+					</object>
+					<int key="connectionID">634</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">copyToClipBoardButton</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="452007242"/>
+					</object>
+					<int key="connectionID">635</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">clipBoardCopyButton</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="452007242"/>
+					</object>
+					<int key="connectionID">636</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3309,11 +3325,11 @@ wGw</bytes>
 						<int key="objectID">372</int>
 						<reference key="object" ref="439893737"/>
 						<array class="NSMutableArray" key="children">
-							<object class="IBNSLayoutConstraint" id="2119611">
+							<object class="IBNSLayoutConstraint" id="716480003">
 								<reference key="firstItem" ref="439893737"/>
 								<int key="firstAttribute">4</int>
 								<int key="relation">0</int>
-								<reference key="secondItem" ref="552941226"/>
+								<reference key="secondItem" ref="933508244"/>
 								<int key="secondAttribute">4</int>
 								<float key="multiplier">1</float>
 								<object class="IBNSLayoutSymbolicConstant" key="constant">
@@ -3325,11 +3341,11 @@ wGw</bytes>
 								<float key="scoringTypeFloat">29</float>
 								<int key="contentType">3</int>
 							</object>
-							<object class="IBNSLayoutConstraint" id="499939526">
+							<object class="IBNSLayoutConstraint" id="38371029">
 								<reference key="firstItem" ref="439893737"/>
 								<int key="firstAttribute">6</int>
 								<int key="relation">0</int>
-								<reference key="secondItem" ref="552941226"/>
+								<reference key="secondItem" ref="933508244"/>
 								<int key="secondAttribute">6</int>
 								<float key="multiplier">1</float>
 								<object class="IBNSLayoutSymbolicConstant" key="constant">
@@ -3570,7 +3586,7 @@ wGw</bytes>
 							<reference ref="452007242"/>
 							<reference ref="602318119"/>
 							<reference ref="486799512"/>
-							<reference ref="552941226"/>
+							<reference ref="933508244"/>
 						</array>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -4247,25 +4263,25 @@ wGw</bytes>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">619</int>
-						<reference key="object" ref="552941226"/>
+						<reference key="object" ref="933508244"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="14990066"/>
+							<reference ref="622805521"/>
 						</array>
 						<reference key="parent" ref="439893737"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">620</int>
-						<reference key="object" ref="14990066"/>
-						<reference key="parent" ref="552941226"/>
+						<reference key="object" ref="622805521"/>
+						<reference key="parent" ref="933508244"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">623</int>
-						<reference key="object" ref="499939526"/>
+						<reference key="object" ref="38371029"/>
 						<reference key="parent" ref="439893737"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">625</int>
-						<reference key="object" ref="2119611"/>
+						<reference key="object" ref="716480003"/>
 						<reference key="parent" ref="439893737"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -4356,8 +4372,8 @@ wGw</bytes>
 					<reference ref="267030798"/>
 					<reference ref="118949830"/>
 					<reference ref="1051297650"/>
-					<reference ref="499939526"/>
-					<reference ref="2119611"/>
+					<reference ref="38371029"/>
+					<reference ref="716480003"/>
 				</array>
 				<string key="372.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="375.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4499,7 +4515,7 @@ wGw</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">633</int>
+			<int key="maxID">636</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4509,7 +4525,7 @@ wGw</bytes>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="codeFoldButtonPressed:">NSButton</string>
 						<string key="constructorButtonPressed:">NSButton</string>
-						<string key="generateCodeButtonPressed:">NSButton</string>
+						<string key="copyButtonPressed:">NSButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="codeFoldButtonPressed:">
@@ -4520,20 +4536,20 @@ wGw</bytes>
 							<string key="name">constructorButtonPressed:</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
-						<object class="IBActionInfo" key="generateCodeButtonPressed:">
-							<string key="name">generateCodeButtonPressed:</string>
+						<object class="IBActionInfo" key="copyButtonPressed:">
+							<string key="name">copyButtonPressed:</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="generateButton">NSButton</string>
+						<string key="clipBoardCopyButton">NSButton</string>
 						<string key="inputBox">NSTextView</string>
 						<string key="outputBox">NSTextView</string>
 						<string key="window">NSWindow</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="generateButton">
-							<string key="name">generateButton</string>
+						<object class="IBToOneOutletInfo" key="clipBoardCopyButton">
+							<string key="name">clipBoardCopyButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="inputBox">
