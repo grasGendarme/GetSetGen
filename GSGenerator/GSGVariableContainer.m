@@ -22,7 +22,6 @@
 
 - (GSGVariableContainer *)initWithName:(NSString *)name type:(NSString *)type comment:(NSString *)comment {
     self = [super init];
-    
     _name = name;
     _type = type;
     _comment = comment;
@@ -38,8 +37,9 @@
     returnValue = [returnValue stringByAppendingString:@"\n"];
     return returnValue;
 }
+
 - (NSString *)makeGetter {
-    NSString *firstLine = [NSString stringWithFormat:@"public %@ get%@() {\n", self.type, [self.name capitalizedString]];
+    NSString *firstLine = [NSString stringWithFormat:@"public %@ get%@() {\n", self.type, [GSGVariableContainer capitalizeFirstLetter:self.name]];
     NSString *secondLine = [NSString stringWithFormat:@"\treturn %@;\n", self.internalName];
     
     return [NSString stringWithFormat:@"%@%@}\n", firstLine, secondLine];
@@ -47,7 +47,7 @@
 }
 
 - (NSString *)makeSetter {
-    NSString *firstLine = [NSString stringWithFormat:@"public void set%@(%@ %@) {\n", [self.name capitalizedString], self.type, self.name];
+    NSString *firstLine = [NSString stringWithFormat:@"public void set%@(%@ %@) {\n", [GSGVariableContainer capitalizeFirstLetter:self.name], self.type, self.name];
 
     NSString *secondLine = [NSString stringWithFormat:@"\t%@ = %@;\n", self.internalName, self.name];
     
@@ -60,6 +60,7 @@
     return [NSString stringWithFormat:@"%@ %@ //Good to know : %@ ", self.type, self.name, self.comment];
 }
 
+// utility method
 + (NSString *)capitalizeFirstLetter:(NSString *)string {
     if(string.length > 1) {
         return [string stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[string substringToIndex:1] capitalizedString]];

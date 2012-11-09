@@ -9,3 +9,5 @@ Write a controller initialized in the appdelegate instead of doing everything th
 A nice bottom menu
 
 Preferences (autocopy to clipboard, etc)
+
+Generate a constructor
