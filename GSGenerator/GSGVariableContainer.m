@@ -55,9 +55,8 @@
 
 }
 
-
-- (NSString *)description {
-    return [NSString stringWithFormat:@"%@ %@ //Good to know : %@ ", self.type, self.name, self.comment];
+- (NSString *)makeConstructorElement {
+    return [NSString stringWithFormat:@"\tthis.%@ = %@;\n", self.internalName, self.name];
 }
 
 // utility method

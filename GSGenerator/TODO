@@ -1,6 +1,7 @@
-TODO: create a parsing library and use it instead of the brutal parsing
+TODO: 
+Create a parsing library and use it instead of the "brutal" parsing
 
-syntax coloring
+Syntax coloring
 
 Complete type when typing
 
@@ -9,7 +10,3 @@ Write a controller initialized in the appdelegate instead of doing everything th
 A nice bottom menu
 
 Preferences (autocopy to clipboard, etc)
-
-Generate a constructor
-
-Remove generate button and convert to only Copy to clipboard button

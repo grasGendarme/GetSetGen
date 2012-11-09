@@ -19,10 +19,9 @@
 
 - (GSGVariableContainer *)initWithName:(NSString *)name type:(NSString *)type comment:(NSString *)comment;
 
-
 - (NSString *)makeFormalDeclaration;
 - (NSString *)makeGetter;
 - (NSString *)makeSetter;
-//- (NSString *)description;
+- (NSString *)makeConstructorElement;
 
 @end
