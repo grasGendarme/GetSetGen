@@ -26,6 +26,7 @@
 
 @implementation GSGAppDelegate
 
+// we'll use it later for automatic text completion
 - (NSMutableSet *)usedTypes {
     if (!_usedTypes) {
         _usedTypes = [NSMutableSet setWithCapacity:30];
@@ -51,12 +52,13 @@
     [self.outputBox setString:[self convertInput:self.inputBox.string generatingConstructorBody:self.generateConstructor generatingCodeFolding:self.generateFoldedCode]];
 }
 
-#warning TODO : improve the way of getting the state of the checkbox
+// if we tick/untick the constructor checkbox, we must regenerate the code
 - (IBAction)constructorButtonPressed:(NSButton *)sender {
     self.generateConstructor = (sender.state == NSOnState);
     [self generateCode];
 }
 
+// same as above for the codeFold checkbox
 - (IBAction)codeFoldButtonPressed:(NSButton *)sender {
     self.generateFoldedCode = (sender.state == NSOnState);
     [self generateCode];
@@ -71,8 +73,8 @@
 }
 
 
+// writing self.outputbox.string to the pasteboard
 - (void)copyResultToClipBoard {
-    // writing self.outputbox.string to the pasteboard
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:nil];
     [pasteboard setString:self.outputBox.string forType:NSStringPboardType];
@@ -159,7 +161,7 @@
     return output;
 }
 
-
+// we want to terminate the app if we close the window
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication
 {
     return YES;
