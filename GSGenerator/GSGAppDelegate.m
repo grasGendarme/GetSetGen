@@ -12,8 +12,6 @@
 #import "GSGConstant.h"
 
 
-#define INITIAL_CAPACITY 80
-
 @interface GSGAppDelegate () <NSTextViewDelegate>
 @property (unsafe_unretained) IBOutlet NSTextView *inputBox;
 @property (unsafe_unretained) IBOutlet NSTextView *outputBox;
@@ -122,7 +120,7 @@
     }
     
     // create the actual output message
-    NSMutableString *output = [NSMutableString stringWithCapacity:INITIAL_CAPACITY];
+    NSMutableString *output = [NSMutableString string];
     
     // formal declaration:
     for (GSGVariableContainer *currentVariableToPrint in generatedVariables) {
@@ -140,24 +138,7 @@
         [output appendFormat:@"// </editor-fold>\n"];
     }
     if (shouldGenerateConstructor) {
-        //build constructor signature
-        [output appendString:@"\npublic Constructor("];
-        
-        for (int i = 1; i < generatedVariables.count; i++) {
-            GSGVariableContainer *currentVariable = [generatedVariables objectAtIndex:i];
-            if(i < generatedVariables.count - 1) {
-                [output appendFormat:@"%@ %@, ", currentVariable.type, currentVariable.name];
-            } else {
-                [output appendFormat:@"%@ %@", currentVariable.type, currentVariable.name];
-            }
-        }
-        [output appendString:@") {\n"];
-        
-        // build the constructor body:
-        for (GSGVariableContainer *currentVariable in generatedVariables) {
-            [output appendString:[currentVariable makeConstructorElement]];
-        }
-        [output appendString:@"}\n"];
+        [output appendString:[GSGVariableContainer buildConstructorFromArrayOfGSGVariables:[generatedVariables copy]]];
     }
     return [output copy];
 }

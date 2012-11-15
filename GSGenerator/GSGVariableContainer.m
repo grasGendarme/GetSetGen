@@ -59,6 +59,29 @@
     return [NSString stringWithFormat:@"\tthis.%@ = %@;\n", self.internalName, self.name];
 }
 
++ (NSString *)buildConstructorFromArrayOfGSGVariables:(NSArray *)array {
+    NSMutableString *output = [NSMutableString string];
+    //build constructor signature
+    [output appendString:@"\npublic Constructor("];
+    
+    for (int i = 1; i < array.count; i++) {
+        GSGVariableContainer *currentVariable = [array objectAtIndex:i];
+        if(i < array.count - 1) {
+            [output appendFormat:@"%@ %@, ", currentVariable.type, currentVariable.name];
+        } else {
+            [output appendFormat:@"%@ %@", currentVariable.type, currentVariable.name];
+        }
+    }
+    [output appendString:@") {\n"];
+    
+    // build the constructor body:
+    for (GSGVariableContainer *currentVariable in array) {
+        [output appendString:[currentVariable makeConstructorElement]];
+    }
+    [output appendString:@"}\n"];
+    return [output copy];
+}
+
 // utility method
 + (NSString *)capitalizeFirstLetter:(NSString *)string {
     if(string.length > 1) {

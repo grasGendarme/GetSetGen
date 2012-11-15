@@ -24,4 +24,7 @@
 - (NSString *)makeSetter;
 - (NSString *)makeConstructorElement;
 
+// this method will build a NSString containing the constructor signature + body.
++ (NSString *)buildConstructorFromArrayOfGSGVariables:(NSArray *)array;
+
 @end
