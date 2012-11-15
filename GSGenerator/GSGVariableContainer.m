@@ -39,7 +39,13 @@
 }
 
 - (NSString *)makeGetter {
-    NSString *firstLine = [NSString stringWithFormat:@"public %@ get%@() {\n", self.type, [GSGVariableContainer capitalizeFirstLetter:self.name]];
+    NSString *firstLine;
+    // if the type is boolean, we want the getter to look like "isName" instead of "getName"
+    if ([self.type isEqualToString:@"boolean"]) {
+        firstLine = [NSString stringWithFormat:@"public %@ is%@() {\n", self.type, [GSGVariableContainer capitalizeFirstLetter:self.name]];
+    } else {
+    firstLine = [NSString stringWithFormat:@"public %@ get%@() {\n", self.type, [GSGVariableContainer capitalizeFirstLetter:self.name]];
+    }
     NSString *secondLine = [NSString stringWithFormat:@"\treturn %@;\n", self.internalName];
     
     return [NSString stringWithFormat:@"%@%@}\n", firstLine, secondLine];
