@@ -1,6 +1,8 @@
 GetSetGenerator is a simple OS X app to let you convert stuff like
+
     int count
     String name // A very useful name
+
 to convenient java declarations, setters, getters and constructor like this:
 
     private int m_count;
