@@ -30,34 +30,33 @@
 }
 
 - (NSString *)makeFormalDeclaration {
-    NSString *returnValue = [NSString stringWithFormat:@"private %@ %@;", self.type, self.internalName];
+    NSMutableString *returnValue = [NSMutableString stringWithFormat:@"private %@ %@;", self.type, self.internalName];
     if(self.comment.length > 0) {
-        returnValue = [NSString stringWithFormat:@"%@\t\t//%@", returnValue, self.comment];
+        [returnValue appendFormat:@"\t\t//%@", self.comment];
     }
-    returnValue = [returnValue stringByAppendingString:@"\n"];
-    return returnValue;
+    [returnValue appendString:@"\n"];
+    return [returnValue copy];
 }
 
 - (NSString *)makeGetter {
-    NSString *firstLine;
+    NSMutableString *getter;
     // if the type is boolean, we want the getter to look like "isName" instead of "getName"
     if ([self.type isEqualToString:@"boolean"]) {
-        firstLine = [NSString stringWithFormat:@"public %@ is%@() {\n", self.type, [GSGVariableContainer capitalizeFirstLetter:self.name]];
+        getter = [NSMutableString stringWithFormat:@"public %@ is%@() {\n", self.type, [GSGVariableContainer capitalizeFirstLetter:self.name]];
     } else {
-    firstLine = [NSString stringWithFormat:@"public %@ get%@() {\n", self.type, [GSGVariableContainer capitalizeFirstLetter:self.name]];
+    getter = [NSMutableString stringWithFormat:@"public %@ get%@() {\n", self.type, [GSGVariableContainer capitalizeFirstLetter:self.name]];
     }
-    NSString *secondLine = [NSString stringWithFormat:@"\treturn %@;\n", self.internalName];
+    [getter appendFormat:@"\treturn %@;\n}\n", self.internalName];
     
-    return [NSString stringWithFormat:@"%@%@}\n", firstLine, secondLine];
-            
+    return [getter copy];
 }
 
 - (NSString *)makeSetter {
-    NSString *firstLine = [NSString stringWithFormat:@"public void set%@(%@ %@) {\n", [GSGVariableContainer capitalizeFirstLetter:self.name], self.type, self.name];
+    NSMutableString *setter = [NSMutableString stringWithFormat:@"public void set%@(%@ %@) {\n", [GSGVariableContainer capitalizeFirstLetter:self.name], self.type, self.name];
 
-    NSString *secondLine = [NSString stringWithFormat:@"\t%@ = %@;\n", self.internalName, self.name];
+    [setter appendFormat:@"\t%@ = %@;\n}\n", self.internalName, self.name];
     
-    return [NSString stringWithFormat:@"%@%@}\n", firstLine, secondLine];
+    return [setter copy];
 
 }
 
