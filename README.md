@@ -22,6 +22,6 @@ to convenient java declarations, setters, getters and constructor like this:
         m_name = name;
     }
     public Constructor(String name) {
-    this.m_count = count;
-    this.m_name = name;
+        this.m_count = count;
+        this.m_name = name;
     }
